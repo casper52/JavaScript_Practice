@@ -3,7 +3,8 @@ function get_list(){
     if(window.event.keyCode == 13){
         var input = document.getElementById("valin").value;
         var listplus = document.createElement("li");
-        listplus.innerHTML = "<a onclick=move_list(\""+input+"\");\>"+input+"</a>";
+   
+        listplus.innerHTML = "<a onclick=move_list(\""+input.replace(/(\s*)/g,"")+"\");\>"+input+"</a>";
         document.getElementById("inlist").appendChild(listplus);
         document.getElementById("valin").value = "";
     }
