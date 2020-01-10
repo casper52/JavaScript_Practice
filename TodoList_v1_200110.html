@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    #title{
+    text-align: center;
+    margin-top: 100px;
+    margin-bottom: 100px;
+    font-size: 45px;
+    font-weight: bolder;
+}
+
+#todo{
+    float : left;
+    margin-left: 450px;
+    width: 400px;
+    height: 700px;
+}
+
+#done{
+    float: right;
+    text-align: left;
+    margin-right: 450px;
+    width: 400px;
+    height: 700px;
+}
+
+.listtitle{
+    font-size: 30px;
+    margin-bottom: 22px;
+    text-align: center;
+    
+}
+
+#donelist{
+    color : darkgrey;
+    text-decoration:line-through;
+    
+}
+
+input[type="text"]{
+    margin-left: 30px;
+    height: 6px; /* 높이 초기화 */ 
+    width: 350px;
+    line-height: normal; /* line-height 초기화 */ 
+    padding: .8em .5em; /* 여백 설정 */
+}
+
+ul li{
+    list-style-type: none;
+    padding: 5px 0px 5px 5px;
+    margin-bottom: 5px;
+    border-bottom: 2px solid #efefef;
+    font-size: 12px;
+}
+    </style>
+</head>
+<body>
+   <div id="title">TO DO LIST!</div>
+
+   <div id="todo">
+       <div class="listtitle">
+           to do
+       </div>
+       <div>
+           <input type="text" id="valin" onkeydown="get_list();"/>
+       </div>
+       <div>
+           <ul id="inlist">
+               
+           </ul>
+       </div>
+   </div>
+
+   <div>
+       <div id="done">
+           <div class="listtitle">
+               done
+           </div>
+           <div id="donelist">
+               <ul>
+                  
+               </ul>
+           </div>
+       </div>
+   </div>
+</body>
+
+<script>
+
+// to do 목록에 item 추가
+ function get_list(){
+     if(window.event.keyCode == 13){
+         var input = document.getElementById("valin").value;
+         var listplus = document.createElement("li");
+         listplus.innerHTML = "<a onclick=move_list(\""+input+"\");\>"+input+"</a>";
+         document.getElementById("inlist").appendChild(listplus);
+         document.getElementById("valin").value = "";
+     }
+ }
+
+// done list에 완료 item 추가
+ function move_list(listplus){
+    var doneItem = document.createElement("li");
+    doneItem.innerHTML = listplus;
+    document.getElementById("donelist").appendChild(doneItem); 
+
+    inlist.childNodes[1].remove(); // to do 목록에서 완료 item 삭제
+    
+ }
+
+</script>
+</html>
